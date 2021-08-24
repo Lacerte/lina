@@ -1,0 +1,205 @@
+<!doctype html>
+
+{% macro lang_option(lang_name, current_lang) %}
+    <option value="{{ lang_name }}" {{ 'selected' if current_lang == lang_name else '' }}>{{ lang_name }}</option>
+{% endmacro %}
+
+{% macro supported_lang_options(current_lang) %}
+    {% for lang_name in supported_languages.keys() %}
+        {{ lang_option(lang_name, current_lang) }}
+    {% endfor %}
+{% endmacro %}
+
+
+<html>
+    <head>
+        <title>SimplyTranslate</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <meta name="description" content="Experience simple and private Google translations">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+        <style>
+        #wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item {
+            width: 450px;
+            height: 150px;
+            margin: 5px 10px;
+        }
+
+
+        .language {
+            height: 50px;
+            margin: 0px 10px;
+        }
+
+        .switch_languages {
+            height: 50px;
+            margin: 0px 5px;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 4px 10px;
+            border: 2px solid #888888;
+        }
+
+        input,
+        select,
+        textarea {
+            font-size: 1rem;
+            padding: 4px;
+            border: 2px solid #888888;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 5rem;
+
+            /* Stretch to form width */
+            width: 100%;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus,
+        button:focus {
+            outline: 2px solid #5d94ff;
+        }
+
+
+        body {
+            justify-content: center;
+            font-family: sans-serif;
+        }
+
+
+        @media screen and (prefers-color-scheme: dark) {
+            body {
+                background-color: #212529;
+                color: #f8f9fa;
+            }
+
+            a:visited {
+                color: #9759f6;
+                text-decoration: none;
+            }
+
+            a {
+                color: #599bf6;
+                text-decoration: none;
+            }
+
+            input,
+            select,
+            button,
+            textarea {
+                background-color: #131618;
+                border-color: #495057;
+                color: #f8f9fa;
+            }
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <center>
+            <h2>SimplyTranslate</h2>
+        </center>
+
+        <form action="/?engine={{ engine }}" method="POST">
+
+            <!-- engine buttons -->
+            {% if engines|length > 1 %}
+                <center>
+                    Translation Engine
+                    {% for _engine in engines %}
+                        <a style="
+                                  {# Show the currently selected engine by underlining it #}
+                                  {% if engine == _engine %}
+                                    text-decoration: underline;
+                                  {% endif %}
+                            " href="/?engine={{ _engine }}&typingiscool={{ use_text_fields }}">
+                            {# These hyphens remove whitespace before/after the block.
+                               They're here to remove the trailing space in the Google
+                               engine link, which gets on yours truly's nerves.
+                               I tried to put them just at the end only (i.e. `-%}`),
+                               but it didn't work for whatever reason.
+                            #}
+
+                            {%- if _engine == "google" -%}
+                                Google
+                            {%- elif _engine == "libre" -%}
+                                LibreTranslate
+                            {%- else -%}
+                                {{ _engine }}
+                            {%- endif -%}
+                        </a>
+
+                        {% if not loop.last %}
+                            |
+                        {% endif %}
+                    {% endfor %}
+                </center>
+                <br>
+            {% endif %}
+
+            <!-- from and to language -->
+            <div id="wrap">
+                <div class="language">
+                    <select name="from_language" id="from_language">
+                        {{ lang_option('Autodetect', from_l) }}
+                        {{ supported_lang_options(from_l) }}
+                    </select>
+                </div>
+
+                <div class="switch_languages">
+                    <button id="switchbutton" title="Switch input and output languages" formaction="/switchlanguages/?engine={{ engine }}&typingiscool={{ use_text_fields }}" type="submit"><-></button>
+                </div>
+
+                <div class="language">
+                    <select name="to_language" id="to_language">
+                        {{ supported_lang_options(to_l) }}
+                    </select>
+                </div>
+            </div>
+
+            <!-- text boxes -->
+            <div id="wrap">
+                <textarea autofocus class="item" id="input" name="input"  placeholder="Enter Text Here">{{ inp }}</textarea>
+                <textarea class="translation item" placeholder="Translation" readonly>
+                    {%- if translation != None -%}{{ translation }}{%- endif -%}
+                </textarea>
+            </div>
+
+            <br>
+
+            <center>
+                <!-- translate button -->
+                <button type="submit">Translate with {{ engine }}!</button>
+
+                <br>
+                <br>
+                <!-- link to share translation -->
+                <a href="/?engine={{ engine }}&text={{ inp|urlencode }}&sl={{ from_l_code }}&tl={{ to_l_code }}">Copy this link to share this translation with others</a>
+            </center>
+
+        </form>
+
+        <br>
+        <br>
+        <br>
+
+        <footer>
+            <center>
+                <a href="/about">About</a>
+            </center>
+        </footer>
+    </body>
+</html>
