@@ -6,15 +6,8 @@ from urllib.parse import urlencode
 from engine.googletranslate import GoogleTranslateEngine
 from engine.utils import *
 
-config = ConfigParser()
 
-config.read(['config.conf'])
-
-engines = []
-
-if config.getboolean('google', 'Enabled', fallback=True):
-    engines.append(GoogleTranslateEngine())
-
+engines = [GoogleTranslateEngine()]
 
 if not engines:
     raise Exception('All translation engines are disabled')
