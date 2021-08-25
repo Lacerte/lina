@@ -13,9 +13,8 @@
 
 <html>
     <head>
-        <title>SimplyTranslate</title>
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <meta name="description" content="Experience simple and private Google translations">
+        <title>SimpleTranslate</title>
+        <meta name="description" content="Experience simple and private translations">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
 
@@ -45,21 +44,33 @@
 
         button {
             font-size: 1rem;
-            padding: 4px 10px;
-            border: 2px solid #888888;
+            padding: 6px 12px;
+            border: 2px solid #DADCE0;
+            border-radius: 5px;
+            color: #5F6368;
+            background-color: #FFFFFF;
         }
 
         input,
         select,
         textarea {
             font-size: 1rem;
-            padding: 4px;
-            border: 2px solid #888888;
+            padding: 6px;
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+            color: #5F6368;
+            
         }
 
         textarea {
             resize: vertical;
+            padding: 10px 12px;
             height: 5rem;
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+            color: #5F6368;
 
             /* Stretch to form width */
             width: 100%;
@@ -67,13 +78,22 @@
 
         input:focus,
         select:focus,
-        textarea:focus,
-        button:focus {
-            outline: 2px solid #5d94ff;
+        textarea:focus {
+            outline: 2px solid #1A73E9;
         }
+        button:focus {
+            outline: 2px solid #1A73E9;
+        }
+
+        a {
+                color: #1A73E9;
+                text-decoration: none;
+            }
 
 
         body {
+            background-color: #FFFFFF;
+            color: #5F6368;
             justify-content: center;
             font-family: sans-serif;
         }
@@ -81,17 +101,20 @@
 
         @media screen and (prefers-color-scheme: dark) {
             body {
-                background-color: #212529;
-                color: #f8f9fa;
+                background-color: #202125;
+                color: #E8EAED;
             }
 
-            a:visited {
-                color: #9759f6;
-                text-decoration: none;
-            }
+            button:focus {
+            outline: 2px solid #89B4F8;
+        }
+
+            textarea:focus {
+            outline: 2px solid #89B4F8;
+        }
 
             a {
-                color: #599bf6;
+                color: #89B4F8;
                 text-decoration: none;
             }
 
@@ -99,9 +122,9 @@
             select,
             button,
             textarea {
-                background-color: #131618;
-                border-color: #495057;
-                color: #f8f9fa;
+                background-color: #202125;
+                border-color: #5F6368;
+                color: #E8EAED;
             }
         }
         </style>
@@ -110,7 +133,7 @@
     <body>
 
         <center>
-            <h2>SimplyTranslate</h2>
+            <h2>SimpleTranslate</h2>
         </center>
 
         <form action="/?engine={{ engine }}" method="POST">
@@ -195,11 +218,5 @@
         <br>
         <br>
         <br>
-
-        <footer>
-            <center>
-                <a href="/about">About</a>
-            </center>
-        </footer>
     </body>
 </html>

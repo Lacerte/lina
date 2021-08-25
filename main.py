@@ -3,13 +3,13 @@ from quart import Quart, render_template, request, redirect, session
 from configparser import ConfigParser
 from urllib.parse import urlencode
 
-from simplytranslate_engines.googletranslate import GoogleTranslateEngine
-from simplytranslate_engines.libretranslate import LibreTranslateEngine
-from simplytranslate_engines.utils import *
+from engine.googletranslate import GoogleTranslateEngine
+from engine.libretranslate import LibreTranslateEngine
+from engine.utils import *
 
 config = ConfigParser()
 
-config.read(['/etc/simplytranslate/shared.conf', '/etc/simplytranslate/web.conf'])
+config.read(['config.conf'])
 
 engines = []
 
