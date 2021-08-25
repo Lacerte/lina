@@ -4,7 +4,6 @@ from configparser import ConfigParser
 from urllib.parse import urlencode
 
 from engine.googletranslate import GoogleTranslateEngine
-from engine.libretranslate import LibreTranslateEngine
 from engine.utils import *
 
 config = ConfigParser()
@@ -16,19 +15,6 @@ engines = []
 if config.getboolean('google', 'Enabled', fallback=True):
     engines.append(GoogleTranslateEngine())
 
-libretranslate_enabled = config.getboolean('libretranslate', 'Enabled', fallback=None)
-
-if libretranslate_enabled is None:
-    print("LibreTranslate is disabled by default; please edit the config file to explicitly state whether it is enabled or not")
-
-if libretranslate_enabled:
-    engines.append(
-        LibreTranslateEngine(
-            config['libretranslate']['Instance'],
-            # `ApiKey` is not required, so use `get` to get `None` as fallback.
-            config['libretranslate'].get('ApiKey'),
-        )
-    )
 
 if not engines:
     raise Exception('All translation engines are disabled')
@@ -100,7 +86,6 @@ async def switchlanguages():
 
     """
     In case we ever want to also switch the translated text with the to-be-translated text, this is a good start.
-
     translation = engine.translate(
         text,
         to_language=to_lang,
