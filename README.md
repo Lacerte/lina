@@ -1,3 +1,11 @@
+# SimpleTranslate
+
+A private Google Translate frontend.
+
+SimpleTranslate does not use any Google framework libraries or APIs. It only parses the website in order to gain the information it needs.
+
+This project is a fork of https://git.sr.ht/~metalune/simplytranslate_web.
+
 ## How to install/use
 ### Clone the repository and install it
 ```sh
