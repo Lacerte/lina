@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap'); 
+
+:root{
+    --primary-color: #FFFFFF;
+    --accent-color: #1A73E9;
+    --body-text-color: #5F6368;
+    --button-color: #5F6368;
+    --border-color: #DADCE0;
+    --icon-color: #5F6368;
+    --icon-size: 24px;
+}
+.dark-theme{
+    --primary-color: #202125;
+    --accent-color: #89B4F8;
+    --body-text-color: #E8EAED;
+    --button-color: #E8EAED;
+    --border-color: #5F6368;
+    --icon-color: #E8EAED;
+    --icon-size: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+
+body {
+    background-color: var(--primary-color);
+    color: var(--body-text-color);
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+/*  HEADER */
+
+header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 10;
+    background: var(--primary-color);
+    border-bottom: solid 1px var(--border-color);
+}
+
+header .logo 
+{
+    position: relative;
+    font-size: 1.5em;
+    color: var(--body-text-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header .navigation 
+{
+    display: flex;
+    justify-content: left;
+}
+
+header .navigation a 
+{
+    list-style: none;
+    margin: 0 14px;
+}
+
+
+@media (max-width: 991px)
+{
+    header
+    {
+       padding: 10px 20px;
+       flex-direction: row; 
+    }
+}
+
+#toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+/* Buttons */
+
+
+.language-button {
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+
+.switch_languages {
+    height: 50px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+button {
+    font-size: 1rem;
+    padding: 6px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--button-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Text Boxes*/
+
+#textboxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+
+.item {
+    width: 450px;
+    height: 150px;
+    margin: 25px 10px;
+    margin-bottom: 0;
+    color: var(--body-text-color);
+}
+
+input,
+select,
+textarea {
+    font-size: 1rem;
+    padding: 6px;
+    border: 2px solid;
+    border-radius: 20px;
+    display: inline-flex;
+    line-height: 32px;
+    min-height: 32px;
+    padding-left: 16px;
+    padding-right: 24px;
+    text-transform: none;
+    background-color: var(--primary-color);
+    border-color:var(--border-color);
+    color:var(--body-text-color);
+    
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+textarea {
+    resize: vertical;
+    padding: 10px 12px;
+    height: 5rem;
+    background-color: var(--primary-color);
+    border-color:var(--border-color);
+    color:var(--body-text-color);
+
+    /* Stretch to form width */
+    width: 100%;
+}
+
+
+/* Icon Button (usually the action icon)*/
+
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    touch-action: manipulation;
+    border: none;
+    outline: none;
+    color: var(--icon-color);
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+}
+
+
+.icon-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+.icon-button:hover:before {
+    opacity: 0.1;
+}
+
+.icon-button:focus:before {
+    opacity: 0.2;
+}
+
+.icon-button:before {
+    border-radius: 50%;
+}
+
+
+/* Icons */
+
+.icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    fill: var(--icon-color);
+}
