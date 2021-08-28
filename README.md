@@ -9,7 +9,7 @@ This project is a fork of https://git.sr.ht/~metalune/simplytranslate_web.
 ## How to install/use
 ### Clone the repository and install it
 ```sh
-git clone https://github.com/PrestoSole/lina.git
+git clone https://github.com/Lacerte/lina.git
 cd lina
 sudo python3 setup.py install
 cd ..
