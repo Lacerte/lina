@@ -100,7 +100,7 @@ header .navigation a
 /* Buttons */
 
 
-.language-button {
+.select_language_button {
     height: 50px;
     margin-right: 10px;
     margin-left: 10px;
@@ -108,7 +108,7 @@ header .navigation a
 
 
 
-.switch_languages {
+.swap_languages {
     height: 50px;
     margin-right: 5px;
     margin-left: 5px;
@@ -122,12 +122,15 @@ button {
     color: var(--button-color);
     background-color: var(--primary-color);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Text Boxes*/
 
 #textboxes {
-    display: flex;
+    display:s flex;
     flex-wrap: wrap;
     justify-content: center;
 

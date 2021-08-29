@@ -1,4 +1,4 @@
-# Lina
+# Lina Tanslate
 
 A private Google Translate frontend.
 

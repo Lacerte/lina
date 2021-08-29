@@ -14,7 +14,7 @@
 
 <html>
     <head>
-        <title>Simple Translate</title>
+        <title>Lina Translate</title>
         <meta name="description" content="A private Google Translate frontend">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
@@ -27,14 +27,14 @@
     <body>
 
         <header>
-            <a href="#" class="logo">Simple Translate</a>
+            <a href="#" class="logo">Lina Translate</a>
             <div class="navigation">
                 <a href="#" id="theme_toggle" class="icon-button" title="Switch theme" >
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
                         <use xlink:href="#brightness_7" />
                     </svg>
                 </a>
-                <a class="icon-button" target="_blank" href="https://github.com/PrestoSole/SimpleTranslate" title="Simpletr on Github" rel="noreferrer">
+                <a class="icon-button" target="_blank" href="https://github.com/Lacerte/lina" title="Lina on Github" rel="noreferrer">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <use xlink:href="#github" />
                     </svg>
@@ -48,18 +48,22 @@
 
                 <!-- from and to language -->
                 <div id="toolbar">
-                    <div class="language-button">
+                    <div class="select_language_button">
                         <select name="from_language" id="from_language">
                             {{ lang_option('Autodetect', from_l) }}
                             {{ supported_lang_options(from_l) }}
                         </select>
                     </div>
     
-                    <div class="switch_languages">
-                        <button id="switchbutton" title="Switch input and output languages" formaction="/switchlanguages/?engine={{ engine }}&typingiscool={{ use_text_fields }}" type="submit"><-></button>
+                    <div class="swap_languages">
+                        <button id="swapbutton" title="Swap languages" formaction="/switchlanguages/?engine={{ engine }}&typingiscool={{ use_text_fields }}" type="submit">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <use xlink:href="#swap_horiz" />
+                            </svg>
+                        </button>
                     </div>
     
-                    <div class="language-button">
+                    <div class="select_language_button">
                         <select name="to_language" id="to_language">
                             {{ supported_lang_options(to_l) }}
                         </select>
@@ -68,7 +72,8 @@
     
                 <!-- text boxes -->
                 <div id="textboxes">
-                    <textarea autofocus class="item" id="input" name="input"  placeholder="Enter Text Here">{{ inp }}</textarea>
+                    <textarea autofocus class="item" id="input" name="input"  placeholder="Enter Text Here">{{ inp }}
+                    </textarea>
                     <textarea class="translation item" placeholder="Translation" readonly>
                         {%- if translation != None -%}{{ translation }}{%- endif -%}
                     </textarea>
@@ -104,7 +109,11 @@
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>       
         </symbol>
         <symbol id="brightness_7">
-            <path d="M0 0h24v24H0z" fill="none"/><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>        </symbol>
+            <path d="M0 0h24v24H0z" fill="none"/><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>        
+        </symbol>
+        <symbol id="swap_horiz">
+            <path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/>        
+        </symbol>
     </svg>   
     <!--End of SVG Icon Library-->> 
 
