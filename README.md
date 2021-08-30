@@ -7,7 +7,7 @@ Lina does not use any Google framework libraries or APIs. It only parses the web
 This project is a fork of https://git.sr.ht/~metalune/simplytranslate_web.
 
 ## How to install/use
-### Clone the repository and install it
+### Clone repository and install it
 ```sh
 git clone https://github.com/Lacerte/lina.git
 cd lina
@@ -15,12 +15,12 @@ sudo python3 setup.py install
 cd ..
 ```
 
-### Install the dependencies
+### Install dependencies
 ```sh
 pip install -r requirements.txt
 ```
 
-### Run the main.py
+### Run main.py
 ```sh
 # Directly
 python3 main.py
