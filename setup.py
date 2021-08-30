@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name = "Lina Translate",
     version = "1.0.0",
-    url = "https://github.com/Lacerte/lina",
+    url = "https://github.com/PrestoSole/lina",
 
     license = "AGPLv3",
     keywords = "translation",
