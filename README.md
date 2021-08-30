@@ -26,4 +26,6 @@ pip install -r requirements.txt
 python3 main.py
 # Using uvicorn
 uvicorn main:app --port 5000
+# Run in browser
+http://localhost:5000
 ```
