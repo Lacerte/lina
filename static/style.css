@@ -130,7 +130,7 @@ button {
 /* Text Boxes*/
 
 #textboxes {
-    display:s flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -142,7 +142,6 @@ button {
     height: 150px;
     margin: 25px 10px;
     margin-bottom: 0;
-    color: var(--body-text-color);
 }
 
 input,
