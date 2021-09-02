@@ -137,16 +137,18 @@ button {
 }
 
 
-.item {
+.input, .output {
     width: 450px;
     height: 150px;
     margin: 25px 10px;
     margin-bottom: 0;
 }
 
-input,
+
 select,
 textarea {
+    resize: none;
+    outline: none;
     font-size: 1rem;
     padding: 6px;
     border: 2px solid;
@@ -163,22 +165,8 @@ textarea {
     
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 2px solid var(--accent-color);
-}
-
-textarea {
-    resize: vertical;
-    padding: 10px 12px;
-    height: 5rem;
-    background-color: var(--primary-color);
-    border-color:var(--border-color);
-    color:var(--body-text-color);
-
-    /* Stretch to form width */
-    width: 100%;
+select:focus, .input:focus{
+	border: 2px solid var(--accent-color);
 }
 
 

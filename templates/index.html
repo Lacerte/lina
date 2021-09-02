@@ -72,12 +72,12 @@
     
                 <!-- text boxes -->
                 <div id="textboxes">
-                    <textarea autofocus class="item" id="input" name="input"  placeholder="Enter Text Here">{{ inp }}</textarea>
-                    <textarea class="translation item" placeholder="Translation" readonly>
+                    <textarea autofocus class="input" id="input" name="input" maxlength="5000" placeholder="Enter Text Here">{{ inp }}</textarea>
+                    <textarea class="output" id="output" placeholder="Translation" readonly>
                         {%- if translation != None -%}{{ translation }}{%- endif -%}
                     </textarea>
                 </div>
-    
+
                 <br>
     
                 <center>
@@ -94,7 +94,7 @@
             toggle.onclick = function (){
                 document.body.classList.toggle("dark-theme");
             }
-            </script>
+        </script>
 
     <!-- SVG Icon Library -->
     <svg style="display: none;">
