@@ -1,8 +1,11 @@
 import lxml.html as lxml
+from urllib.parse import urlencode
 import requests
+import json
 
 class GoogleTranslateEngine:
     name = "google"
+    display_name = "Google"
 
     def get_supported_languages(self):
         return {
@@ -116,20 +119,59 @@ class GoogleTranslateEngine:
             "Zulu": "zu",
         }
 
+    def detect_language(self, text):
+        return None
+
+    def get_tts(self, text, language):
+        if text == None or language == None:
+            return None
+        elif len(text) == 0 or len(language) == 0:
+            return None
+
+        if language == "auto":
+            language = "en"
+
+        params = urlencode({
+            "tl": language,
+            "q": text.strip(),
+            "client": "tw-ob"
+        })
+        return f"https://translate.google.com/translate_tts?{params}"
+
     def translate(self, text, to_language, from_language="auto"):
         r = requests.get(
-            "https://translate.google.com/m",
+            "https://translate.googleapis.com/translate_a/single?dt=bd&dt=ex&dt=ld&dt=md&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=qc",
             params={
-                "q": text,
+                "client": "gtx", # client
+                "ie": "UTF-8", # input encoding
+                "oe": "UTF-8", # output encoding
                 "sl": from_language,
-                "tl": to_language
-            })
+                "tl": to_language,
+                "hl": to_language,
+                "q": text
+            }
+        )
 
-        doc = lxml.fromstring(r.text)
-        for container in doc.find_class("result-container"):
-            return container.text_content()
+        try:
+            j = json.loads(r.text)
+
+            request_body = j[0]
+            translation = ""
+
+            for i in range(len(request_body)):
+                if request_body[i][0] != None:
+                    translation += request_body[i][0]
+
+            return translation
+
+            # This will probably be used in a future version
+            #definition_body = request_body[1][0]
+        except Exception as e:
+            print("Error translating using Google Translate:")
+            print(str(e))
+            pass
 
         return ""
 
 if __name__ == "__main__":
-    print(GoogleTranslateEngine().translate("hello", "fr", "en"))
+    print(GoogleTranslateEngine().translate("Hello Weird World!!\n\n\nHi!", "fr", "en"))
